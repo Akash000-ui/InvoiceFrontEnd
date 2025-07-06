@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary px-4">
+  <a class="navbar-brand" href="#">
+    <i class="bi bi-receipt-cutoff me-2"></i>InvoiceApp
+  </a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home" routerLinkActive="active">
+          <i class="bi bi-house-door me-1"></i> Home
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home/add-invoice" routerLinkActive="active">
+          <i class="bi bi-send-plus me-1"></i> Send Invoice
+        </a>
+      </li>
+    </ul>
+    <div class="theme-toggle ms-auto me-3">
+  <input type="checkbox" id="themeToggle" (change)="toggleDarkMode($event)">
+  <label for="themeToggle" class="toggle-label">
+    <i class="bi bi-sun-fill sun-icon"></i>
+    <i class="bi bi-moon-fill moon-icon"></i>
+    <span class="toggle-ball"></span>
+  </label>
+</div>
+
+
+  </div>
+  
+</nav>
+
+<router-outlet></router-outlet>

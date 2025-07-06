@@ -1,0 +1,56 @@
+/* Card 3D hover effect */
+.invoice-card-3d {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+.invoice-card-3d:hover {
+  transform: scale(1.03) rotateY(1deg) translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Button animation */
+.btn-animate {
+  transition: transform 0.2s ease;
+}
+.btn-animate:hover {
+  transform: scale(1.05);
+}
+
+/* Status badge styling */
+.badge {
+  font-size: 0.85rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+}
+
+/* Empty state styling */
+.alert-warning {
+  border-left: 5px solid #ffc107;
+  background: #fff8e1;
+}
+
+/* Smooth entry */
+.fade-in {
+  animation: fadeInUp 0.6s ease-in-out;
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.invoice-card-3d {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #fff;
+}

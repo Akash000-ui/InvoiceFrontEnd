@@ -1,0 +1,80 @@
+<div class="container my-5 fade-in">
+  <h2 class="mb-4 text-primary fw-bold">
+    <i class="bi bi-journals me-2"></i>All Invoices
+  </h2>
+
+  <!-- Filter Controls -->
+  <div class="row g-3 align-items-end mb-4">
+    <div class="col-md-3">
+      <label class="form-label">Status</label>
+      <select [(ngModel)]="selectedStatus" (change)="applyStatusFilter()" class="form-select shadow-sm">
+        <option value="">-- All --</option>
+        <option value="PAID">PAID</option>
+        <option value="PENDING">PENDING</option>
+        <option value="OVERDUE">OVERDUE</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">Start Date</label>
+      <input type="date" [(ngModel)]="startDate" class="form-control shadow-sm" />
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label">End Date</label>
+      <input type="date" [(ngModel)]="endDate" class="form-control shadow-sm" />
+    </div>
+
+    <div class="col-md-3 d-flex gap-2">
+      <button class="btn btn-primary w-100 btn-animate" (click)="applyDateRangeFilter()">
+        <i class="bi bi-funnel-fill"></i> Filter
+      </button>
+      <button class="btn btn-secondary w-100 btn-animate" (click)="clearFilters()">
+        <i class="bi bi-x-circle-fill"></i> Clear
+      </button>
+    </div>
+  </div>
+
+  <!-- Invoice Cards -->
+  <div class="row g-4">
+    <div class="col-md-4" *ngFor="let invoice of invoices">
+      <div class="card invoice-card-3d mb-4 shadow-sm border-0 h-100 fade-in">
+        <div class="card-body">
+          <h5 class="card-title text-primary">
+            <i class="bi bi-receipt me-2"></i> #{{ invoice.invoiceNumber }}
+          </h5>
+          <p><strong>👤 Client:</strong> {{ invoice.clientName }}</p>
+          <p><strong>🗓️ Issue Date:</strong> {{ invoice.issueDate }}</p>
+          <p><strong>📅 Due Date:</strong> {{ invoice.dueDate }}</p>
+          <p>
+            <strong>📌 Status:</strong>
+            <span class="badge px-3 py-1"
+              [ngClass]="{
+                'bg-success': invoice.status === 'PAID',
+                'bg-warning text-dark': invoice.status === 'PENDING',
+                'bg-danger': invoice.status === 'OVERDUE'
+              }">
+              {{ invoice.status }}
+            </span>
+          </p>
+          <p><strong>💰 Total:</strong> ₹{{ invoice.totalAmount | number:'1.2-2' }}</p>
+
+          <div class="d-flex justify-content-between mt-3">
+            <button class="btn btn-outline-primary btn-sm btn-animate" (click)="viewInvoice(invoice.id)">
+              <i class="bi bi-eye-fill me-1"></i> View
+            </button>
+            <button *ngIf="invoice.status !== 'PAID'" class="btn btn-outline-success btn-sm btn-animate"
+              (click)="changeStatus(invoice.id)">
+              <i class="bi bi-cash-coin me-1"></i> Mark Paid
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="invoices.length === 0" class="alert alert-warning text-center mt-4 shadow-sm">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i> No invoices found.
+  </div>
+</div>
