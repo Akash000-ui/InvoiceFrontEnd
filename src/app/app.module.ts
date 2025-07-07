@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddInvoiceComponent } from './add-invoice/add-invoice.component';
 import { InvoiceListComponent } from './invoice-list/invoice-list.component';
 import { InvoiceComponent } from './invoice/invoice.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 const routes: Routes = [
@@ -34,7 +35,8 @@ const routes: Routes = [
     HomeComponent,
     AddInvoiceComponent,
     InvoiceListComponent,
-    InvoiceComponent
+    InvoiceComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
